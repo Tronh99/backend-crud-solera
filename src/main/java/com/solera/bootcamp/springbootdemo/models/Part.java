@@ -20,7 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Part {
-    @Id
+@Id
     public Long Id;
     public String Name;
     public String Description;
