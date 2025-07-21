@@ -1,8 +1,7 @@
 package com.solera.bootcamp.springbootdemo.models;
 
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -16,12 +15,14 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Category{
+public class Workshop {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String description;
+
+
     @OneToMany(mappedBy = "category")
-    List<Product> products;
-    
+    List<Part> products;
+
 }

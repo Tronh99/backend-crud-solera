@@ -1,8 +1,7 @@
-package com.solera.bootcamp.springbootdemo.controllers;
+package com.solera.bootcamp.springbootdemo;
 
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,57 +10,135 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.solera.bootcamp.springbootdemo.models.Product;
-import com.solera.bootcamp.springbootdemo.Repository.ProductRepository;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.solera.bootcamp.springbootdemo.Models.Product;
+import com.solera.bootcamp.springbootdemo.repository.ProductRepository;
+
+import jakarta.websocket.server.PathParam;
 
 @RestController
-@RequestMapping("/API/v1")
+@RequestMapping("/api/v1")
 public class First {
-    /*@RequestMapping(value ="/hello", method = RequestMethod.GET)
-    public String sayHello() {
-        return "Hello from the first API!";
-    }*/
 
-    private ProductRepository productRepository;
+    private static ProductRepository productRepository;
 
     public First(ProductRepository repository) {
         productRepository = repository;
     }
 
-    @GetMapping("/hello")
-    public String sayHello(@RequestParam(value = "nombre", defaultValue = "Mundo") String nombre) {
-        return "Hello" + " " + nombre;
+
+    @GetMapping("/workshops")
+    public Iterable<Workshop> getProducts() {
+        return productRepository.findAll();
     }
 
-    @GetMapping("/product/{id}")
-    public String getProduct(@PathVariable Long id) {
-        Product product = productRepository.findById(id).get();
-        if (product == null) {
-            return  "Product not found with ID: " + id;
+    @GetMapping("/vehicles")
+    public Iterable<Workshop> getProducts() {
+        return productRepository.findAll();
+    }
+
+    @GetMapping("/parts")
+    public Iterable<Workshop> getProducts() {
+        return productRepository.findAll();
+    }
+
+    @GetMapping("/locations")
+    public Iterable<Workshop> getProducts() {
+        return productRepository.findAll();
+    }
+
+
+    @PostMapping("/products/{id}")
+    public int getProductById(@PathVariable long id) {
+        Optional<Product> product = productRepository.findById(id);
+        if (product.isPresent()) {
+            return "Product found: " + product.get().getName() + " with ID: " + product.get().getId();
+        } else {
+            return "Product with ID: " + id + " not found.";
         }
-        return "Product found: " + product.getName();
     }
 
-    @GetMapping("/product")
-    public ArrayList<Product> getAllProducts() {
-        ArrayList<Product> products = new ArrayList<>();
-        productRepository.findAll().forEach(products::add);
-        return products;
-    }
-
-    @PostMapping("/product")
-    public String postHello(@RequestBody Product product) {
-        //return "The product name is: " + product.Name;
-        if (product.getId() != null) {
-            product.setId(null); // Ensure the ID is null for new products
+    @PostMapping("/parts/{id}")
+    public int getProductById(@PathVariable long id) {
+        Optional<Product> product = productRepository.findById(id);
+        if (product.isPresent()) {
+            return "Product found: " + product.get().getName() + " with ID: " + product.get().getId();
+        } else {
+            return "Product with ID: " + id + " not found.";
         }
+    }
+
+    @PostMapping("/workshops/{id}")
+    public String postProduct(@RequestBody Product product) {
         productRepository.save(product);
-        return "The product " + product.getName() + " has been saved successfully!";
+        return "Product saved: " + product.getName() + " has been added with ID: " + product.getId() + " saved successfully!";
     }
 
-    @DeleteMapping("/product/{id}")
-    public String deleteProduct(@PathVariable Long id) {
+    @PostMapping("/locations/{id}")
+    public String postProduct(@RequestBody Product product) {
+        productRepository.save(product);
+        return "Product saved: " + product.getName() + " has been added with ID: " + product.getId() + " saved successfully!";
+    }
+
+    @PutMapping("/products/{id}")
+    public int getProductById(@PathVariable long id) {
+        Optional<Product> product = productRepository.findById(id);
+        if (product.isPresent()) {
+            return "Product found: " + product.get().getName() + " with ID: " + product.get().getId();
+        } else {
+            return "Product with ID: " + id + " not found.";
+        }
+    }
+
+    @PutMapping("/parts/{id}")
+    public int getProductById(@PathVariable long id) {
+        Optional<Product> product = productRepository.findById(id);
+        if (product.isPresent()) {
+            return "Product found: " + product.get().getName() + " with ID: " + product.get().getId();
+        } else {
+            return "Product with ID: " + id + " not found.";
+        }
+    }
+
+    @PutMapping("/workshops/{id}")
+    public String postProduct(@RequestBody Product product) {
+        productRepository.save(product);
+        return "Product saved: " + product.getName() + " has been added with ID: " + product.getId() + " saved successfully!";
+    }
+
+    @PutMapping("/locations/{id}")
+    public String postProduct(@RequestBody Product product) {
+        productRepository.save(product);
+        return "Product saved: " + product.getName() + " has been added with ID: " + product.getId() + " saved successfully!";
+    }
+
+
+    @DeleteMapping("/products/{id}")
+    public Long deleteProduct(@PathVariable Long id) {
         productRepository.deleteById(id);
-        return "The product with ID " + id + " has been deleted successfully!";
+        return "Product with ID: " + id + " has been deleted successfully!";
+    }
+
+    @DeleteMapping("/parts/{id}")
+    public int getProductById(@PathVariable long id) {
+        Optional<Product> product = productRepository.findById(id);
+        if (product.isPresent()) {
+            return "Product found: " + product.get().getName() + " with ID: " + product.get().getId();
+        } else {
+            return "Product with ID: " + id + " not found.";
+        }
+    }
+
+    @DeleteMapping("/workshops/{id}")
+    public String postProduct(@RequestBody Product product) {
+        productRepository.save(product);
+        return "Product saved: " + product.getName() + " has been added with ID: " + product.getId() + " saved successfully!";
+    }
+
+    @DeleteMapping("/locations/{id}")
+    public String postProduct(@RequestBody Product product) {
+        productRepository.save(product);
+        return "Product saved: " + product.getName() + " has been added with ID: " + product.getId() + " saved successfully!";
     }
 }

@@ -3,7 +3,6 @@ package com.solera.bootcamp.springbootdemo.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -20,17 +19,17 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class Part {
     @Id
-    @GeneratedValue
     public Long Id;
     public String Name;
     public String Description;
     public Double Price;
+
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     @JsonIgnore
-    private Category category;
+    private Location category;
 
     @ManyToMany
     @JoinTable(name = "product_desidered_list",
