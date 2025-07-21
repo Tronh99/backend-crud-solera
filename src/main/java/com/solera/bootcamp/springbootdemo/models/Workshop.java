@@ -1,9 +1,9 @@
 package com.solera.bootcamp.springbootdemo.models;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,8 +21,9 @@ public class Workshop {
     private String name;
     private String description;
 
+    @OneToOne(mappedBy = "location")
+    private Long locationId;
 
-    @OneToMany(mappedBy = "category")
-    List<Part> products;
-
+    @OneToMany(mappedBy = "vehicles")
+    private Long vehicleId;
 }
