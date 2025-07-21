@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Part {
-    @Id
+@Id
     public Long Id;
     public String Name;
     public String Description;
