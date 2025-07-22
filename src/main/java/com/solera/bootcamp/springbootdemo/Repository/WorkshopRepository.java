@@ -1,8 +1,10 @@
 package com.solera.bootcamp.springbootdemo.Repository;
 
+import com.solera.bootcamp.springbootdemo.models.Workshop;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import com.solera.bootcamp.springbootdemo.models.Part;
+
 
 @Repository
-public interface ProductRepository  extends CrudRepository<Part, Long> {}
+public interface WorkshopRepository extends CrudRepository<Workshop, Long> {
+}

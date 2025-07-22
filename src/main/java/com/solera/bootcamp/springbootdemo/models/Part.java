@@ -14,17 +14,17 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Part {
-@Id
-    public Long Id;
-    public String Name;
-    public String Description;
-    public Double Price;
+    @Id
+    private Long id;
+    private String name;
+    private String description;
+    private Double price;
     private int quantity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vehicle_id", nullable = false)
     @JsonIgnore
-    private Vehicle id;
+    private Vehicle vehicle;
 
 }
     

@@ -25,7 +25,6 @@ public class Location {
     private String city;
     private String country;
 
-    @OneToOne(mappedBy = "workshop")
-    private Long workshopId;
-    
+    @OneToOne(mappedBy = "location")
+    private Workshop workshop;
 }
