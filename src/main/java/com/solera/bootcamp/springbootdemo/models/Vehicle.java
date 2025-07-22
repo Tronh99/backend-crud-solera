@@ -34,7 +34,7 @@ public class Vehicle {
     @Column(name = "vin", nullable = false, length = 17, unique = true)
     private String vin;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "workshop_id")
     private Workshop workshop;
 
