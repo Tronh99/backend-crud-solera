@@ -34,14 +34,10 @@ public class VehiclesController {
         }
     }
 
-
-  @GetMapping("/{id}/with-cost")
+    @GetMapping("/{id}/with-cost")
     public ResponseEntity<VehicleWithCostDTO> getVehicleWithCost(@PathVariable Long id) {
         return ResponseEntity.ok(vehicleService.getVehicleWithCost(id));
     }
-
-
-
 
 
     @PostMapping

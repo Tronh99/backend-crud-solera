@@ -9,13 +9,20 @@ import com.solera.bootcamp.springbootdemo.models.Vehicle;
 @Repository
 public interface VehiclesRepository extends CrudRepository<Vehicle, Long> {
 
-
     @Query("""
-        SELECT SUM(CAST(p.cost AS double) * vp.quantity)
-        FROM VehiclePart vp
-        JOIN vp.part p
-        WHERE vp.vehicle.vehicleId = :vehicleId
-    """)
+                SELECT SUM(p.cost * vp.quantity)
+                FROM VehiclePart vp
+                JOIN vp.part p
+                WHERE vp.vehicle.vehicleId = :vehicleId
+            """)
     Double getTotalCostByVehicle(@Param("vehicleId") Long vehicleId);
+
+    // Debug query to check if vehicle parts exist
+    @Query("""
+                SELECT COUNT(vp)
+                FROM VehiclePart vp
+                WHERE vp.vehicle.vehicleId = :vehicleId
+            """)
+    Long countVehiclePartsByVehicleId(@Param("vehicleId") Long vehicleId);
 
 }
