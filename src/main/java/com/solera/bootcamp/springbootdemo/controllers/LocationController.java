@@ -3,7 +3,7 @@ package com.solera.bootcamp.springbootdemo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.solera.bootcamp.springbootdemo.models.Location;
+import com.solera.bootcamp.springbootdemo.dto.LocationDTO;
 import com.solera.bootcamp.springbootdemo.services.LocationService;
 import java.util.List;
 import jakarta.validation.Valid;
@@ -20,8 +20,8 @@ public class LocationController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Location>> getAllLocations() {
-        List<Location> locations = locationService.getAllLocations();
+    public ResponseEntity<List<LocationDTO>> getAllLocations() {
+        List<LocationDTO> locations = locationService.getAllLocationsDTO();
         return ResponseEntity.ok(locations);
     }
 
@@ -31,8 +31,8 @@ public class LocationController {
 //    }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Location> getLocationById(@PathVariable Long id) {
-        Location location = locationService.getLocationById(id);
+    public ResponseEntity<LocationDTO> getLocationById(@PathVariable Long id) {
+        LocationDTO location = locationService.getLocationDTOById(id);
         if (location != null) {
             return ResponseEntity.ok(location);
         } else {
@@ -41,14 +41,14 @@ public class LocationController {
     }
 
     @PostMapping
-    public ResponseEntity<Location> createLocation(@Valid @RequestBody Location location) {
-        Location savedLocation = locationService.createLocation(location);
+    public ResponseEntity<LocationDTO> createLocation(@Valid @RequestBody LocationDTO locationDTO) {
+        LocationDTO savedLocation = locationService.createLocationFromDTO(locationDTO);
         return ResponseEntity.ok(savedLocation);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Location> updateLocation(@Valid @PathVariable Long id, @RequestBody Location locationDetails) {
-        Location updatedLocation = locationService.updateLocation(id, locationDetails);
+    public ResponseEntity<LocationDTO> updateLocation(@Valid @PathVariable Long id, @RequestBody LocationDTO locationDTO) {
+        LocationDTO updatedLocation = locationService.updateLocationFromDTO(id, locationDTO);
         if (updatedLocation != null) {
             return ResponseEntity.ok(updatedLocation);
         } else {

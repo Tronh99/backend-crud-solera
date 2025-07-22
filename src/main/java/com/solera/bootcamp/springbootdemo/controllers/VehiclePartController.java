@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
-import com.solera.bootcamp.springbootdemo.models.VehiclePart;
+import com.solera.bootcamp.springbootdemo.dto.VehiclePartDTO;
 import com.solera.bootcamp.springbootdemo.services.VehiclePartService;
 import java.util.List;
 
@@ -16,14 +16,14 @@ public class VehiclePartController {
     private VehiclePartService vehiclePartService;
 
     @GetMapping
-    public ResponseEntity<List<VehiclePart>> getAllVehicleParts() {
-        List<VehiclePart> vehicleParts = vehiclePartService.getAllVehicleParts();
+    public ResponseEntity<List<VehiclePartDTO>> getAllVehicleParts() {
+        List<VehiclePartDTO> vehicleParts = vehiclePartService.getAllVehiclePartsDTO();
         return ResponseEntity.ok(vehicleParts);
     }
 
     @GetMapping("/{vehicleId}/{partId}")
-    public ResponseEntity<VehiclePart> getVehiclePartById(@PathVariable Long vehicleId, @PathVariable Long partId) {
-        VehiclePart vehiclePart = vehiclePartService.getVehiclePartById(vehicleId, partId);
+    public ResponseEntity<VehiclePartDTO> getVehiclePartById(@PathVariable Long vehicleId, @PathVariable Long partId) {
+        VehiclePartDTO vehiclePart = vehiclePartService.getVehiclePartDTOById(vehicleId, partId);
         if (vehiclePart != null) {
             return ResponseEntity.ok(vehiclePart);
         } else {
@@ -32,14 +32,18 @@ public class VehiclePartController {
     }
 
     @PostMapping
-    public ResponseEntity<VehiclePart> createVehiclePart(@Valid @RequestBody VehiclePart vehiclePart) {
-        VehiclePart savedVehiclePart = vehiclePartService.createVehiclePart(vehiclePart);
-        return ResponseEntity.ok(savedVehiclePart);
+    public ResponseEntity<VehiclePartDTO> createVehiclePart(@Valid @RequestBody VehiclePartDTO vehiclePartDTO) {
+        VehiclePartDTO savedVehiclePart = vehiclePartService.createVehiclePartFromDTO(vehiclePartDTO);
+        if (savedVehiclePart != null) {
+            return ResponseEntity.ok(savedVehiclePart);
+        } else {
+            return ResponseEntity.badRequest().build(); // Vehicle or Part not found
+        }
     }
 
     @PutMapping("/{vehicleId}/{partId}")
-    public ResponseEntity<VehiclePart> updateVehiclePart(@PathVariable Long vehicleId, @PathVariable Long partId, @Valid @RequestBody VehiclePart vehiclePartDetails) {
-        VehiclePart updatedVehiclePart = vehiclePartService.updateVehiclePart(vehicleId, partId, vehiclePartDetails);
+    public ResponseEntity<VehiclePartDTO> updateVehiclePart(@PathVariable Long vehicleId, @PathVariable Long partId, @Valid @RequestBody VehiclePartDTO vehiclePartDTO) {
+        VehiclePartDTO updatedVehiclePart = vehiclePartService.updateVehiclePartFromDTO(vehicleId, partId, vehiclePartDTO);
         if (updatedVehiclePart != null) {
             return ResponseEntity.ok(updatedVehiclePart);
         } else {

@@ -17,14 +17,14 @@ public class VehiclesController {
     private VehicleService vehicleService;
 
     @GetMapping
-    public ResponseEntity<List<Vehicle>> getAllVehicles() {
-        List<Vehicle> vehicles = vehicleService.getAllVehicles();
+    public ResponseEntity<List<VehicleDTO>> getAllVehicles() {
+        List<VehicleDTO> vehicles = vehicleService.getAllVehiclesDTO();
         return ResponseEntity.ok(vehicles);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Vehicle> getVehicleById(@PathVariable Long id) {
-        Vehicle vehicle = vehicleService.getVehicleById(id);
+    public ResponseEntity<VehicleDTO> getVehicleById(@PathVariable Long id) {
+        VehicleDTO vehicle = vehicleService.getVehicleDTOById(id);
         if (vehicle != null) {
             return ResponseEntity.ok(vehicle);
         } else {
@@ -33,14 +33,18 @@ public class VehiclesController {
     }
 
     @PostMapping
-    public ResponseEntity<Vehicle> createVehicle(@RequestBody Vehicle vehicle) {
-        Vehicle savedVehicle = vehicleService.createVehicle(vehicle);
-        return ResponseEntity.ok(savedVehicle);
+    public ResponseEntity<VehicleDTO> createVehicle(@Valid @RequestBody VehicleDTO vehicleDTO) {
+        VehicleDTO savedVehicle = vehicleService.createVehicleFromDTO(vehicleDTO);
+        if (savedVehicle != null) {
+            return ResponseEntity.ok(savedVehicle);
+        } else {
+            return ResponseEntity.badRequest().build(); // Workshop not found
+        }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Vehicle> updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle) {
-        Vehicle updatedVehicle = vehicleService.updateVehicle(id, vehicle);
+    public ResponseEntity<VehicleDTO> updateVehicle(@PathVariable Long id, @Valid @RequestBody VehicleDTO vehicleDTO) {
+        VehicleDTO updatedVehicle = vehicleService.updateVehicleFromDTO(id, vehicleDTO);
         if (updatedVehicle != null) {
             return ResponseEntity.ok(updatedVehicle);
         } else {
@@ -54,43 +58,6 @@ public class VehiclesController {
         if (vehicle != null) {
             vehicleService.deleteVehicle(id);
             return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    // DTO Endpoints - These endpoints use DTOs and only require IDs for relationships
-    @GetMapping("/dto")
-    public ResponseEntity<List<VehicleDTO>> getAllVehiclesDTO() {
-        List<VehicleDTO> vehicles = vehicleService.getAllVehiclesDTO();
-        return ResponseEntity.ok(vehicles);
-    }
-
-    @GetMapping("/dto/{id}")
-    public ResponseEntity<VehicleDTO> getVehicleDTOById(@PathVariable Long id) {
-        VehicleDTO vehicle = vehicleService.getVehicleDTOById(id);
-        if (vehicle != null) {
-            return ResponseEntity.ok(vehicle);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @PostMapping("/dto")
-    public ResponseEntity<VehicleDTO> createVehicleFromDTO(@Valid @RequestBody VehicleDTO vehicleDTO) {
-        VehicleDTO savedVehicle = vehicleService.createVehicleFromDTO(vehicleDTO);
-        if (savedVehicle != null) {
-            return ResponseEntity.ok(savedVehicle);
-        } else {
-            return ResponseEntity.badRequest().build(); // Workshop not found
-        }
-    }
-
-    @PutMapping("/dto/{id}")
-    public ResponseEntity<VehicleDTO> updateVehicleFromDTO(@PathVariable Long id, @Valid @RequestBody VehicleDTO vehicleDTO) {
-        VehicleDTO updatedVehicle = vehicleService.updateVehicleFromDTO(id, vehicleDTO);
-        if (updatedVehicle != null) {
-            return ResponseEntity.ok(updatedVehicle);
         } else {
             return ResponseEntity.notFound().build();
         }

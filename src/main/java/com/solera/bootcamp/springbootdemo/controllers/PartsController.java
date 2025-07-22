@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
-import com.solera.bootcamp.springbootdemo.models.Part;
+import com.solera.bootcamp.springbootdemo.dto.PartDTO;
 import com.solera.bootcamp.springbootdemo.services.PartService;
 import java.util.List;
 
@@ -16,14 +16,14 @@ public class PartsController {
     private PartService partService;
 
     @GetMapping
-    public ResponseEntity<List<Part>> getAllParts() {
-        List<Part> parts = partService.getAllParts();
+    public ResponseEntity<List<PartDTO>> getAllParts() {
+        List<PartDTO> parts = partService.getAllPartsDTO();
         return ResponseEntity.ok(parts);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Part> getPartById(@PathVariable Long id) {
-        Part part = partService.getPartById(id);
+    public ResponseEntity<PartDTO> getPartById(@PathVariable Long id) {
+        PartDTO part = partService.getPartDTOById(id);
         if (part != null) {
             return ResponseEntity.ok(part);
         } else {
@@ -32,14 +32,14 @@ public class PartsController {
     }
 
     @PostMapping
-    public ResponseEntity<Part> createPart(@Valid @RequestBody Part part) {
-        Part savedPart = partService.createPart(part);
+    public ResponseEntity<PartDTO> createPart(@Valid @RequestBody PartDTO partDTO) {
+        PartDTO savedPart = partService.createPartFromDTO(partDTO);
         return ResponseEntity.ok(savedPart);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Part> updatePart(@PathVariable Long id, @Valid @RequestBody Part partDetails) {
-        Part updatedPart = partService.updatePart(id, partDetails);
+    public ResponseEntity<PartDTO> updatePart(@PathVariable Long id, @Valid @RequestBody PartDTO partDTO) {
+        PartDTO updatedPart = partService.updatePartFromDTO(id, partDTO);
         if (updatedPart != null) {
             return ResponseEntity.ok(updatedPart);
         } else {
