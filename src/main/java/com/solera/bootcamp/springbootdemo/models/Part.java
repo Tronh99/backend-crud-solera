@@ -1,20 +1,22 @@
 package com.solera.bootcamp.springbootdemo.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
+@Table(name = "Parts")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Part {
     @Id
+<<<<<<< Updated upstream
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
@@ -26,6 +28,24 @@ public class Part {
     @JoinColumn(name = "vehicle_id", nullable = false)
     @JsonIgnore
     private Vehicle vehicle;
+=======
+    @Column(name = "part_id")
+    private Long partId;
+    
+    @Column(name = "name", nullable = false, length = 200)
+    private String name;
+    
+    @Column(name = "description")
+    private String description;
+    
+    @Column(name = "quantity")
+    private Integer quantity;
+    
+    @Column(name = "cost", nullable = false, precision = 10, scale = 2)
+    private BigDecimal cost;
+>>>>>>> Stashed changes
 
+    @OneToMany(mappedBy = "part", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<VehiclePart> vehicleParts;
 }
     
