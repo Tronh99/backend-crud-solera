@@ -3,6 +3,7 @@ package com.solera.bootcamp.springbootdemo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 import com.solera.bootcamp.springbootdemo.models.VehiclePart;
 import com.solera.bootcamp.springbootdemo.services.VehiclePartService;
 import java.util.List;
@@ -31,13 +32,13 @@ public class VehiclePartController {
     }
 
     @PostMapping
-    public ResponseEntity<VehiclePart> createVehiclePart(@RequestBody VehiclePart vehiclePart) {
+    public ResponseEntity<VehiclePart> createVehiclePart(@Valid @RequestBody VehiclePart vehiclePart) {
         VehiclePart savedVehiclePart = vehiclePartService.createVehiclePart(vehiclePart);
         return ResponseEntity.ok(savedVehiclePart);
     }
 
     @PutMapping("/{vehicleId}/{partId}")
-    public ResponseEntity<VehiclePart> updateVehiclePart(@PathVariable Long vehicleId, @PathVariable Long partId, @RequestBody VehiclePart vehiclePartDetails) {
+    public ResponseEntity<VehiclePart> updateVehiclePart(@PathVariable Long vehicleId, @PathVariable Long partId, @Valid @RequestBody VehiclePart vehiclePartDetails) {
         VehiclePart updatedVehiclePart = vehiclePartService.updateVehiclePart(vehicleId, partId, vehiclePartDetails);
         if (updatedVehiclePart != null) {
             return ResponseEntity.ok(updatedVehiclePart);

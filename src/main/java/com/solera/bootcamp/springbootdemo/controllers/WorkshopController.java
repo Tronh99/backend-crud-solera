@@ -3,6 +3,7 @@ package com.solera.bootcamp.springbootdemo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 import com.solera.bootcamp.springbootdemo.models.Workshop;
 import com.solera.bootcamp.springbootdemo.services.WorkshopService;
 import java.util.List;
@@ -31,13 +32,13 @@ public class WorkshopController {
     }
 
     @PostMapping
-    public ResponseEntity<Workshop> createWorkshop(@RequestBody Workshop workshop) {
+    public ResponseEntity<Workshop> createWorkshop(@Valid @RequestBody Workshop workshop) {
         Workshop savedWorkshop = workshopService.createWorkshop(workshop);
         return ResponseEntity.ok(savedWorkshop);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Workshop> updateWorkshop(@PathVariable Long id, @RequestBody Workshop workshopDetails) {
+    public ResponseEntity<Workshop> updateWorkshop(@PathVariable Long id, @Valid @RequestBody Workshop workshopDetails) {
         Workshop updatedWorkshop = workshopService.updateWorkshop(id, workshopDetails);
         if (updatedWorkshop != null) {
             return ResponseEntity.ok(updatedWorkshop);
