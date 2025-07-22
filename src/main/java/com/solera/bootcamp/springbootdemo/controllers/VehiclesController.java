@@ -1,10 +1,6 @@
 package com.solera.bootcamp.springbootdemo.controllers;
 
-<<<<<<< Updated upstream
 
-=======
-import java.util.ArrayList;
->>>>>>> Stashed changes
 import java.util.List;
 
 import com.solera.bootcamp.springbootdemo.models.Vehicle;
@@ -20,11 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-<<<<<<< Updated upstream
 
-=======
-import com.solera.bootcamp.springbootdemo.models.Vehicle;
->>>>>>> Stashed changes
 
 @RestController
 @RequestMapping("/api/v1/vehicles")

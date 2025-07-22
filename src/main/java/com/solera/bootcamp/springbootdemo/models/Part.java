@@ -16,19 +16,13 @@ import java.util.List;
 @NoArgsConstructor
 public class Part {
     @Id
-<<<<<<< Updated upstream
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String description;
-    private Double price;
-    private int quantity;
+ 
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vehicle_id", nullable = false)
     @JsonIgnore
     private Vehicle vehicle;
-=======
     @Column(name = "part_id")
     private Long partId;
     
@@ -43,7 +37,6 @@ public class Part {
     
     @Column(name = "cost", nullable = false, precision = 10, scale = 2)
     private BigDecimal cost;
->>>>>>> Stashed changes
 
     @OneToMany(mappedBy = "part", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<VehiclePart> vehicleParts;

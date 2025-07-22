@@ -1,6 +1,5 @@
 package com.solera.bootcamp.springbootdemo.controllers;
 
-<<<<<<< Updated upstream
 import com.solera.bootcamp.springbootdemo.models.Part;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,14 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.solera.bootcamp.springbootdemo.models.Workshop;
-=======
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.solera.bootcamp.springbootdemo.models.Part;
 import com.solera.bootcamp.springbootdemo.Repository.PartRepository;
 import java.util.Optional;
->>>>>>> Stashed changes
 
 import java.util.ArrayList;
 
@@ -27,15 +24,12 @@ import java.util.ArrayList;
 @RequestMapping("/api/v1/parts")
 public class PartsController {
 
-<<<<<<< Updated upstream
      @GetMapping("/{id}")    
     public String getPartById(@PathVariable Long id) {
         return "";
     }
-=======
     @Autowired
     private PartRepository partRepository;
->>>>>>> Stashed changes
 
     @GetMapping
     public ResponseEntity<Iterable<Part>> getAllParts() {

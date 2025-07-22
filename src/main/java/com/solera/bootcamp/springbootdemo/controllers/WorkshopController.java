@@ -1,20 +1,17 @@
 package com.solera.bootcamp.springbootdemo.controllers;
 
-<<<<<<< Updated upstream:src/main/java/com/solera/bootcamp/springbootdemo/controllers/WorkshopController.java
 import com.solera.bootcamp.springbootdemo.models.Workshop;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-=======
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.solera.bootcamp.springbootdemo.models.Workshop;
 import com.solera.bootcamp.springbootdemo.Repository.WorkshopRepository;
 import java.util.Optional;
->>>>>>> Stashed changes:src/main/java/com/solera/bootcamp/springbootdemo/controllers/WorkShopController.java
 
 @RestController
 @RequestMapping("/api/v1/workshops")
