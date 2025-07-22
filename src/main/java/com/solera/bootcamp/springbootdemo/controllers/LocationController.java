@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import com.solera.bootcamp.springbootdemo.models.Location;
 import com.solera.bootcamp.springbootdemo.services.LocationService;
 import java.util.List;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/locations")
@@ -14,11 +15,20 @@ public class LocationController {
     @Autowired
     private LocationService locationService;
 
+    public LocationController(LocationService locationService) {
+        this.locationService = locationService;
+    }
+
     @GetMapping
     public ResponseEntity<List<Location>> getAllLocations() {
         List<Location> locations = locationService.getAllLocations();
         return ResponseEntity.ok(locations);
     }
+
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Vehicle> getVehicle(@PathVariable Long id) {
+//        return ResponseEntity.ok(vehicleService.getVehicleById(id));
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Location> getLocationById(@PathVariable Long id) {
@@ -31,13 +41,13 @@ public class LocationController {
     }
 
     @PostMapping
-    public ResponseEntity<Location> createLocation(@RequestBody Location location) {
+    public ResponseEntity<Location> createLocation(@Valid @RequestBody Location location) {
         Location savedLocation = locationService.createLocation(location);
         return ResponseEntity.ok(savedLocation);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Location> updateLocation(@PathVariable Long id, @RequestBody Location locationDetails) {
+    public ResponseEntity<Location> updateLocation(@Valid @PathVariable Long id, @RequestBody Location locationDetails) {
         Location updatedLocation = locationService.updateLocation(id, locationDetails);
         if (updatedLocation != null) {
             return ResponseEntity.ok(updatedLocation);
@@ -47,7 +57,7 @@ public class LocationController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteLocation(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteLocation(@Valid @PathVariable Long id) {
         boolean deleted = locationService.deleteLocation(id);
         if (deleted) {
             return ResponseEntity.noContent().build();

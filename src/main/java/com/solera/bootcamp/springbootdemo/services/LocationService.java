@@ -17,12 +17,16 @@ public class LocationService {
     }
 
     public Location getLocationById(Long id) {
+
+
         return locationRepository.findById(id).orElse(null);
+
     }
 
     public Location createLocation(Location location) {
-        return locationRepository.save(location);
+            return locationRepository.save(location);
     }
+
 
     public Location updateLocation(Long id, Location location) {
         if (locationRepository.existsById(id)) {
