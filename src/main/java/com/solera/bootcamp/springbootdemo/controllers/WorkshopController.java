@@ -1,18 +1,15 @@
 package com.solera.bootcamp.springbootdemo.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.solera.bootcamp.springbootdemo.models.Workshop;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
 @RequestMapping("/api/v1/workshops")
-public class WorkShopController {
+public class WorkshopController {
 
     @GetMapping("/{id}")    
     public List<Workshop> getWorkShopById(@PathVariable Long id) {

@@ -27,7 +27,9 @@ public class Vehicle {
     @OneToMany(mappedBy = "parts")
     private List<Part> parts;
 
-    @OneToOne(mappedBy = "workshop")
-    private Long workshopId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "workshop_id")
+    @JsonIgnore
+    private Workshop workshop;
 
 }

@@ -1,5 +1,6 @@
 package com.solera.bootcamp.springbootdemo.controllers;
 
+import com.solera.bootcamp.springbootdemo.models.Part;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,13 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.solera.bootcamp.springbootdemo.models.Workshop;
 
+import java.util.ArrayList;
+
 @RestController
 @RequestMapping("/api/v1/parts")
 public class PartsController {
 
      @GetMapping("/{id}")    
     public String getPartById(@PathVariable Long id) {
-        return new String();
+        return "";
     }
 
     @GetMapping

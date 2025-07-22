@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import com.solera.bootcamp.springbootdemo.models.Location;
 
 @Repository
-public interface CategoryRepository extends CrudRepository<Location, Long> {
+public interface LocationRepository extends CrudRepository<Location, Long> {
 }

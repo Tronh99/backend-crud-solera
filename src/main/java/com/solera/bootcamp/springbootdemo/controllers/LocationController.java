@@ -1,5 +1,6 @@
 package com.solera.bootcamp.springbootdemo.controllers;
 
+import com.solera.bootcamp.springbootdemo.models.Location;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.solera.bootcamp.springbootdemo.models.Workshop;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/locations")
@@ -28,7 +32,7 @@ public class LocationController {
 
     @PostMapping
     public String createLocation(@RequestBody Location location) {
-        return "Locationo created successfully";
+        return "Location created successfully";
     }
 
     @PutMapping("/{id}")
