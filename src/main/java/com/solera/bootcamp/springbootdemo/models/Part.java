@@ -1,5 +1,6 @@
 package com.solera.bootcamp.springbootdemo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -41,5 +42,6 @@ public class Part {
     private BigDecimal cost;
 
     @OneToMany(mappedBy = "part", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<VehiclePart> vehicleParts;
 }

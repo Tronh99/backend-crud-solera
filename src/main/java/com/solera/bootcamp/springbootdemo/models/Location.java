@@ -1,5 +1,7 @@
 package com.solera.bootcamp.springbootdemo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -58,5 +60,6 @@ public class Location {
     private String country;
 
     @OneToOne(mappedBy = "location", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private Workshop workshop;
 }

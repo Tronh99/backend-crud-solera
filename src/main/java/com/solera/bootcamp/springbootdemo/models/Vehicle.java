@@ -1,5 +1,6 @@
 package com.solera.bootcamp.springbootdemo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -55,6 +56,7 @@ public class Vehicle {
     private Workshop workshop;
     
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<VehiclePart> vehicleParts;
 
 }

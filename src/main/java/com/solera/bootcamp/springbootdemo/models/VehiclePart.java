@@ -1,5 +1,6 @@
 package com.solera.bootcamp.springbootdemo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -28,11 +29,13 @@ public class VehiclePart {
     @ManyToOne
     @MapsId("vehicleId")
     @JoinColumn(name = "vehicle_id")
+    @JsonIgnore
     private Vehicle vehicle;
     
     @NotNull(message = "Part is required")
     @ManyToOne
     @MapsId("partId")
     @JoinColumn(name = "part_id")
+    @JsonIgnore
     private Part part;
 }
