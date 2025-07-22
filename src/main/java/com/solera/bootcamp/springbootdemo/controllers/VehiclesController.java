@@ -3,6 +3,9 @@ package com.solera.bootcamp.springbootdemo.controllers;
 import java.util.List;
 import com.solera.bootcamp.springbootdemo.models.Vehicle;
 import com.solera.bootcamp.springbootdemo.services.VehicleService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,13 +34,13 @@ public class VehiclesController {
     }
 
     @PostMapping
-    public ResponseEntity<Vehicle> createVehicle(@RequestBody Vehicle vehicle) {
+    public ResponseEntity<Vehicle> createVehicle(@Valid @RequestBody Vehicle vehicle) {
         Vehicle savedVehicle = vehicleService.createVehicle(vehicle);
         return ResponseEntity.ok(savedVehicle);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Vehicle> updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle) {
+    public ResponseEntity<Vehicle> updateVehicle(@PathVariable Long id, @Valid @RequestBody Vehicle vehicle) {
         Vehicle updatedVehicle = vehicleService.updateVehicle(id, vehicle);
         if (updatedVehicle != null) {
             return ResponseEntity.ok(updatedVehicle);
