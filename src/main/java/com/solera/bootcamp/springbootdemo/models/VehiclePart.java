@@ -19,7 +19,7 @@ public class VehiclePart {
     
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
-    
+
     @ManyToOne
     @MapsId("vehicleId")
     @JoinColumn(name = "vehicle_id")

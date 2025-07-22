@@ -29,7 +29,7 @@ public class VehicleService {
 
     public Vehicle updateVehicle(Long id, Vehicle vehicle) {
         if (vehiclesRepository.existsById(id)) {
-            vehicle.setId(id);
+            vehicle.setVehicleId(id);
             return vehiclesRepository.save(vehicle);
         }
         return null;

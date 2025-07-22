@@ -17,12 +17,6 @@ import java.util.List;
 public class Part {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
- 
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "vehicle_id", nullable = false)
-    @JsonIgnore
-    private Vehicle vehicle;
     @Column(name = "part_id")
     private Long partId;
     
@@ -41,4 +35,3 @@ public class Part {
     @OneToMany(mappedBy = "part", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<VehiclePart> vehicleParts;
 }
-    
