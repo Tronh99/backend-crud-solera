@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.solera.bootcamp.springbootdemo.Repository.VehiclesRepository;
 import com.solera.bootcamp.springbootdemo.models.Vehicle;
+import com.solera.bootcamp.springbootdemo.models.VehicleWithCostDTO;
 
 @Service
 public class VehicleService {
 
     @Autowired
     private VehiclesRepository vehiclesRepository;
-
 
     public List<Vehicle> getAllVehicles() {
         return (List<Vehicle>) vehiclesRepository.findAll();
@@ -37,6 +37,25 @@ public class VehicleService {
 
     public void deleteVehicle(Long id) {
         vehiclesRepository.deleteById(id);
+    }
+
+    public VehicleWithCostDTO getVehicleWithCost(Long vehicleId) {
+        Vehicle vehicle = vehiclesRepository.findById(vehicleId)
+                .orElseThrow(() -> new RuntimeException("Vehicle not found"));
+
+        Double totalCost = vehiclesRepository.getTotalCostByVehicle(vehicleId);
+        if (totalCost == null)
+            totalCost = 0.0;
+
+        return new VehicleWithCostDTO(
+                vehicle.getVehicleId(),
+                vehicle.getModel(),
+                vehicle.getBrand(),
+                vehicle.getYear(),
+                vehicle.getColor(),
+                vehicle.getVin(),
+                totalCost.doubleValue()
+        );
     }
 
 }

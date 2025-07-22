@@ -2,6 +2,7 @@ package com.solera.bootcamp.springbootdemo.controllers;
 
 import java.util.List;
 import com.solera.bootcamp.springbootdemo.models.Vehicle;
+import com.solera.bootcamp.springbootdemo.models.VehicleWithCostDTO;
 import com.solera.bootcamp.springbootdemo.services.VehicleService;
 
 import jakarta.validation.Valid;
@@ -32,6 +33,16 @@ public class VehiclesController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
+  @GetMapping("/{id}/with-cost")
+    public ResponseEntity<VehicleWithCostDTO> getVehicleWithCost(@PathVariable Long id) {
+        return ResponseEntity.ok(vehicleService.getVehicleWithCost(id));
+    }
+
+
+
+
 
     @PostMapping
     public ResponseEntity<Vehicle> createVehicle(@Valid @RequestBody Vehicle vehicle) {
