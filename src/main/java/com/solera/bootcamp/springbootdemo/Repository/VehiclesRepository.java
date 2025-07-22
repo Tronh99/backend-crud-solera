@@ -2,7 +2,15 @@ package com.solera.bootcamp.springbootdemo.Repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import com.solera.bootcamp.springbootdemo.models.Part;
+import com.solera.bootcamp.springbootdemo.models.Vehicle;
 
 @Repository
-public interface VehiclesRepository extends CrudRepository<Part, Long> {}
+public interface VehiclesRepository extends CrudRepository<Vehicle, Long> {
+
+
+
+
+
+
+
+}

@@ -15,6 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Part {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;

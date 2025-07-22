@@ -16,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Vehicle {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long Id;
     public String Model;
     public String Brand;
@@ -24,7 +25,7 @@ public class Vehicle {
     public String VIN;
     public int quantity;
 
-    @OneToMany(mappedBy = "parts")
+    @OneToMany(mappedBy = "parts", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Part> parts;
 
     @ManyToOne(fetch = FetchType.LAZY)
