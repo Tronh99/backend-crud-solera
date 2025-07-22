@@ -1,15 +1,14 @@
 package com.solera.bootcamp.springbootdemo.services;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.solera.bootcamp.springbootdemo.Repository.VehiclesRepository;
 import com.solera.bootcamp.springbootdemo.models.Vehicle;
+import com.solera.bootcamp.springbootdemo.models.VehicleWithCostDTO;
 import com.solera.bootcamp.springbootdemo.models.Workshop;
 import com.solera.bootcamp.springbootdemo.dto.VehicleDTO;
 
@@ -21,7 +20,6 @@ public class VehicleService {
 
     @Autowired
     private WorkshopService workshopService;
-
 
     public List<Vehicle> getAllVehicles() {
         return (List<Vehicle>) vehiclesRepository.findAll();
@@ -100,7 +98,7 @@ public class VehicleService {
         vehicle.setYear(dto.getYear());
         vehicle.setColor(dto.getColor());
         vehicle.setVin(dto.getVin());
-        
+
         // Fetch the workshop by ID if provided
         if (dto.getWorkshopId() != null) {
             Workshop workshop = workshopService.getWorkshopById(dto.getWorkshopId());
@@ -109,8 +107,27 @@ public class VehicleService {
             }
             vehicle.setWorkshop(workshop);
         }
-        
+
         return vehicle;
+    }
+
+    // Cost calculation method that was missing after merge
+    public VehicleWithCostDTO getVehicleWithCost(Long vehicleId) {
+        Vehicle vehicle = vehiclesRepository.findById(vehicleId)
+                .orElseThrow(() -> new RuntimeException("Vehicle not found"));
+
+        Double totalCost = vehiclesRepository.getTotalCostByVehicle(vehicleId);
+        if (totalCost == null)
+            totalCost = 0.0;
+
+        return new VehicleWithCostDTO(
+                vehicle.getVehicleId(),
+                vehicle.getModel(),
+                vehicle.getBrand(),
+                vehicle.getYear(),
+                vehicle.getColor(),
+                vehicle.getVin(),
+                totalCost.doubleValue());
     }
 
 }

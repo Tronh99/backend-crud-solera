@@ -2,6 +2,7 @@ package com.solera.bootcamp.springbootdemo.controllers;
 
 import java.util.List;
 import com.solera.bootcamp.springbootdemo.models.Vehicle;
+import com.solera.bootcamp.springbootdemo.models.VehicleWithCostDTO;
 import com.solera.bootcamp.springbootdemo.dto.VehicleDTO;
 import com.solera.bootcamp.springbootdemo.services.VehicleService;
 
@@ -10,7 +11,6 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/vehicles")
@@ -39,7 +39,6 @@ public class VehiclesController {
     public ResponseEntity<VehicleWithCostDTO> getVehicleWithCost(@PathVariable Long id) {
         return ResponseEntity.ok(vehicleService.getVehicleWithCost(id));
     }
-
 
     @PostMapping
     public ResponseEntity<VehicleDTO> createVehicle(@Valid @RequestBody VehicleDTO vehicleDTO) {
