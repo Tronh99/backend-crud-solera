@@ -40,6 +40,12 @@ public class VehiclesController {
         return ResponseEntity.ok(vehicleService.getVehicleWithCost(id));
     }
 
+    @GetMapping("/with-cost")
+    public ResponseEntity<List<VehicleWithCostDTO>> getAllVehiclesWithCost() {
+        List<VehicleWithCostDTO> vehicles = vehicleService.getAllVehiclesWithCost();
+        return ResponseEntity.ok(vehicles);
+    }
+
     @PostMapping
     public ResponseEntity<VehicleDTO> createVehicle(@Valid @RequestBody VehicleDTO vehicleDTO) {
         VehicleDTO savedVehicle = vehicleService.createVehicleFromDTO(vehicleDTO);

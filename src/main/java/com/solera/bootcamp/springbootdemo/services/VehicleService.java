@@ -130,4 +130,26 @@ public class VehicleService {
                 totalCost.doubleValue());
     }
 
+    public List<VehicleWithCostDTO> getAllVehiclesWithCost() {
+        List<Vehicle> vehicles = getAllVehicles();
+       
+        return vehicles.stream()
+                .map(vehicle -> {
+                    Double totalCost = vehiclesRepository.getTotalCostByVehicle(vehicle.getVehicleId());
+                    if (totalCost == null)
+                        totalCost = 0.0;
+ 
+                    return new VehicleWithCostDTO(
+                            vehicle.getVehicleId(),
+                            vehicle.getModel(),
+                            vehicle.getBrand(),
+                            vehicle.getYear(),
+                            vehicle.getColor(),
+                            vehicle.getVin(),
+                            totalCost.doubleValue()
+                    );
+                })
+                .collect(Collectors.toList());
+    }
+
 }

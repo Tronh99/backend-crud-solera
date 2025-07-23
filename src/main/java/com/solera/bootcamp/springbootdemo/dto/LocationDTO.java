@@ -31,7 +31,7 @@ public class LocationDTO {
     @Size(max = 5, message = "Exterior number must have a maximum of 5 characters")
     private String extNumber;
 
-    @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Postal code must contain only letters, numbers, and spaces")
+    @Pattern(regexp = "^[0-9]+$", message = "Postal code must contain only numbers")
     @NotBlank(message = "Postal code is required")
     @Size(max = 5, message = "Postal code must have a maximum of 5 characters")
     private String postalCode;

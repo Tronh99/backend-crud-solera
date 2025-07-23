@@ -27,11 +27,13 @@ public class Vehicle {
     private Long vehicleId;
 
     @NotBlank(message = "Model cannot be empty")
+    @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Model must contain only letters, numbers, and spaces")
     @Size(max = 200, message = "Model cannot exceed 200 characters")
     @Column(name = "model", nullable = false, length = 200)
     private String model;
 
     @NotBlank(message = "Brand cannot be empty")
+    @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Brand name must contain only letters, numbers, and spaces")
     @Size(max = 200, message = "Brand cannot exceed 200 characters")
     @Column(name = "brand", nullable = false, length = 200)
     private String brand;
@@ -42,11 +44,13 @@ public class Vehicle {
     private String year;
 
     @NotBlank(message = "Color cannot be empty")
+    @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Color must contain only letters, numbers, and spaces")
     @Size(max = 200, message = "Color cannot exceed 200 characters")
     @Column(name = "color", nullable = false, length = 200)
     private String color;
 
     @NotBlank(message = "VIN cannot be empty")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "VIN must contain only letters and numbers")
     @Size(min = 17, max = 17, message = "VIN must be exactly 17 characters")
     @Column(name = "vin", nullable = false, length = 17, unique = true)
     private String vin;

@@ -21,11 +21,13 @@ public class Workshop {
     private Long workshopId;
     
     @NotBlank(message = "Workshop name is required")
+    @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Workshop name must contain only letters, numbers, and spaces")
     @Size(max = 200, message = "Workshop name must not exceed 200 characters")
     @Column(name = "name", nullable = false, length = 200)
     private String name;
     
     @Size(max = 1000, message = "Description must not exceed 1000 characters")
+    @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Part name must contain only letters, numbers, and spaces")
     @Column(name = "description")
     private String description;
 
