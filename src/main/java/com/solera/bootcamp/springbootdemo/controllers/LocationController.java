@@ -25,11 +25,6 @@ public class LocationController {
         return ResponseEntity.ok(locations);
     }
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Vehicle> getVehicle(@PathVariable Long id) {
-//        return ResponseEntity.ok(vehicleService.getVehicleById(id));
-//    }
-
     @GetMapping("/{id}")
     public ResponseEntity<LocationDTO> getLocationById(@PathVariable Long id) {
         LocationDTO location = locationService.getLocationDTOById(id);
@@ -47,7 +42,7 @@ public class LocationController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<LocationDTO> updateLocation(@Valid @PathVariable Long id, @RequestBody LocationDTO locationDTO) {
+    public ResponseEntity<LocationDTO> updateLocation(@PathVariable Long id, @Valid @RequestBody LocationDTO locationDTO) {
         LocationDTO updatedLocation = locationService.updateLocationFromDTO(id, locationDTO);
         if (updatedLocation != null) {
             return ResponseEntity.ok(updatedLocation);
@@ -57,7 +52,7 @@ public class LocationController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteLocation(@Valid @PathVariable Long id) {
+    public ResponseEntity<Void> deleteLocation(@PathVariable Long id) {
         boolean deleted = locationService.deleteLocation(id);
         if (deleted) {
             return ResponseEntity.noContent().build();

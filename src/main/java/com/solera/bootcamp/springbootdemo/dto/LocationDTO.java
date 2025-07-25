@@ -41,11 +41,6 @@ public class LocationDTO {
     @Size(max = 200, message = "City must have a maximum of 200 characters")
     private String city;
 
-    @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "State must contain only letters, numbers, and spaces")
-    @NotBlank(message = "State is required")
-    @Size(max = 200, message = "State must have a maximum of 200 characters")
-    private String state;
-
     @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Country must contain only letters, numbers, and spaces")
     @NotBlank(message = "Country is required")
     @Size(max = 200, message = "Country must have a maximum of 200 characters")

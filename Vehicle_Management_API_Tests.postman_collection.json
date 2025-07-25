@@ -1,0 +1,838 @@
+{
+  "info": {
+    "name": "Vehicle Management API Tests - Extended",
+    "description": "Complete test collection with 5+ examples for each entity type",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Locations",
+      "item": [
+        {
+          "name": "Create Location 1 - Downtown Auto Center",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Downtown Auto Center\",\n  \"street\": \"123 Main Street\",\n  \"extNumber\": \"456A\",\n  \"postalCode\": \"85001\",\n  \"city\": \"Phoenix\",\n  \"country\": \"USA\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/locations",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "locations"]
+            }
+          }
+        },
+        {
+          "name": "Create Location 2 - North Valley Workshop",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"North Valley Workshop\",\n  \"street\": \"789 Industrial Boulevard\",\n  \"extNumber\": \"101\",\n  \"postalCode\": \"85260\",\n  \"city\": \"Scottsdale\",\n  \"country\": \"USA\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/locations",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "locations"]
+            }
+          }
+        },
+        {
+          "name": "Create Location 3 - West Side Garage",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"West Side Garage\",\n  \"street\": \"555 Sunset Drive\",\n  \"extNumber\": \"22B\",\n  \"postalCode\": \"85301\",\n  \"city\": \"Glendale\",\n  \"country\": \"USA\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/locations",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "locations"]
+            }
+          }
+        },
+        {
+          "name": "Create Location 4 - East Mesa Service",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"East Mesa Service\",\n  \"street\": \"2468 Apache Trail\",\n  \"extNumber\": \"777\",\n  \"postalCode\": \"85204\",\n  \"city\": \"Mesa\",\n  \"country\": \"USA\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/locations",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "locations"]
+            }
+          }
+        },
+        {
+          "name": "Create Location 5 - South Tempe Motors",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"South Tempe Motors\",\n  \"street\": \"1357 Mill Avenue\",\n  \"extNumber\": \"999\",\n  \"postalCode\": \"85284\",\n  \"city\": \"Tempe\",\n  \"country\": \"USA\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/locations",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "locations"]
+            }
+          }
+        },
+        {
+          "name": "Create Location - Invalid (Test Validation)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\",\n  \"street\": \"123 Main St!@#\",\n  \"extNumber\": \"123456\",\n  \"postalCode\": \"ABCDE\",\n  \"city\": \"\",\n  \"country\": \"\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/locations",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "locations"]
+            }
+          }
+        },
+        {
+          "name": "Get All Locations",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/v1/locations",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "locations"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Workshops", 
+      "item": [
+        {
+          "name": "Create Workshop 1 - Premium Auto Repair",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Premium Auto Repair\",\n  \"description\": \"Full service automotive repair specializing in engine diagnostics and transmission work\",\n  \"locationId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/workshops",
+              "protocol": "http", 
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "workshops"]
+            }
+          }
+        },
+        {
+          "name": "Create Workshop 2 - Collision Center Pro",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Collision Center Pro\",\n  \"description\": \"Expert body work paint services and accident repair for all vehicle types\",\n  \"locationId\": 2\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/workshops",
+              "protocol": "http", 
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "workshops"]
+            }
+          }
+        },
+        {
+          "name": "Create Workshop 3 - Quick Lube Express",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Quick Lube Express\",\n  \"description\": \"Fast oil changes tire rotations and basic maintenance services\",\n  \"locationId\": 3\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/workshops",
+              "protocol": "http", 
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "workshops"]
+            }
+          }
+        },
+        {
+          "name": "Create Workshop 4 - Diesel Performance Center",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Diesel Performance Center\",\n  \"description\": \"Specialized diesel engine repair and performance tuning for trucks and heavy vehicles\",\n  \"locationId\": 4\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/workshops",
+              "protocol": "http", 
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "workshops"]
+            }
+          }
+        },
+        {
+          "name": "Create Workshop 5 - Electric Vehicle Specialists",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Electric Vehicle Specialists\",\n  \"description\": \"Advanced EV battery service charging systems and hybrid vehicle maintenance\",\n  \"locationId\": 5\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/workshops",
+              "protocol": "http", 
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "workshops"]
+            }
+          }
+        },
+        {
+          "name": "Get All Workshops",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/v1/workshops",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "workshops"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Vehicles",
+      "item": [
+        {
+          "name": "Create Vehicle 1 - Toyota Camry", 
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"Camry\",\n  \"brand\": \"Toyota\",\n  \"year\": \"2022\",\n  \"color\": \"Silver Metallic\",\n  \"vin\": \"1HGBH41JXMN109186\",\n  \"workshopId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicles",
+              "protocol": "http",
+              "host": ["localhost"], 
+              "port": "8080",
+              "path": ["api", "v1", "vehicles"]
+            }
+          }
+        },
+        {
+          "name": "Create Vehicle 2 - Honda Civic", 
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"Civic\",\n  \"brand\": \"Honda\",\n  \"year\": \"2021\",\n  \"color\": \"Deep Blue Pearl\",\n  \"vin\": \"2HGFC2F59KH123456\",\n  \"workshopId\": 2\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicles",
+              "protocol": "http",
+              "host": ["localhost"], 
+              "port": "8080",
+              "path": ["api", "v1", "vehicles"]
+            }
+          }
+        },
+        {
+          "name": "Create Vehicle 3 - Ford F150", 
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"F150\",\n  \"brand\": \"Ford\",\n  \"year\": \"2023\",\n  \"color\": \"Oxford White\",\n  \"vin\": \"1FTFW1ET5DFC12345\",\n  \"workshopId\": 3\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicles",
+              "protocol": "http",
+              "host": ["localhost"], 
+              "port": "8080",
+              "path": ["api", "v1", "vehicles"]
+            }
+          }
+        },
+        {
+          "name": "Create Vehicle 4 - Chevrolet Silverado", 
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"Silverado\",\n  \"brand\": \"Chevrolet\",\n  \"year\": \"2020\",\n  \"color\": \"Jet Black\",\n  \"vin\": \"3GCUYDED5LG234567\",\n  \"workshopId\": 4\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicles",
+              "protocol": "http",
+              "host": ["localhost"], 
+              "port": "8080",
+              "path": ["api", "v1", "vehicles"]
+            }
+          }
+        },
+        {
+          "name": "Create Vehicle 5 - Tesla Model 3", 
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"Model 3\",\n  \"brand\": \"Tesla\",\n  \"year\": \"2024\",\n  \"color\": \"Pearl White Multi Coat\",\n  \"vin\": \"5YJ3E1EA8PF345678\",\n  \"workshopId\": 5\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicles",
+              "protocol": "http",
+              "host": ["localhost"], 
+              "port": "8080",
+              "path": ["api", "v1", "vehicles"]
+            }
+          }
+        },
+        {
+          "name": "Create Vehicle 6 - BMW X5", 
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"X5\",\n  \"brand\": \"BMW\",\n  \"year\": \"2023\",\n  \"color\": \"Mineral Gray Metallic\",\n  \"vin\": \"5UXCR6C0XP9456789\",\n  \"workshopId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicles",
+              "protocol": "http",
+              "host": ["localhost"], 
+              "port": "8080",
+              "path": ["api", "v1", "vehicles"]
+            }
+          }
+        },
+        {
+          "name": "Get All Vehicles",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicles",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "vehicles"]
+            }
+          }
+        },
+        {
+          "name": "Get All Vehicles with Total Cost",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicles/with-cost",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "vehicles", "with-cost"]
+            }
+          }
+        },
+        {
+          "name": "Get Vehicle with Cost by ID (Vehicle 1)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicles/1/with-cost",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "vehicles", "1", "with-cost"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Parts",
+      "item": [
+        {
+          "name": "Create Part 1 - Brake Pad Set Front",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Brake Pad Set Front\",\n  \"description\": \"Premium ceramic brake pads for front wheels with noise reduction technology\",\n  \"quantity\": 25,\n  \"cost\": 89.99\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/parts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080", 
+              "path": ["api", "v1", "parts"]
+            }
+          }
+        },
+        {
+          "name": "Create Part 2 - Oil Filter Standard",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Oil Filter Standard\",\n  \"description\": \"High efficiency oil filter compatible with most passenger vehicles\",\n  \"quantity\": 50,\n  \"cost\": 15.50\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/parts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080", 
+              "path": ["api", "v1", "parts"]
+            }
+          }
+        },
+        {
+          "name": "Create Part 3 - Air Filter Cabin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Air Filter Cabin\",\n  \"description\": \"HEPA grade cabin air filter for improved interior air quality\",\n  \"quantity\": 30,\n  \"cost\": 22.75\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/parts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080", 
+              "path": ["api", "v1", "parts"]
+            }
+          }
+        },
+        {
+          "name": "Create Part 4 - Tire Set All Season",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Tire Set All Season\",\n  \"description\": \"Premium all season tires with excellent tread life and weather performance\",\n  \"quantity\": 8,\n  \"cost\": 850.00\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/parts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080", 
+              "path": ["api", "v1", "parts"]
+            }
+          }
+        },
+        {
+          "name": "Create Part 5 - Spark Plug Set",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Spark Plug Set\",\n  \"description\": \"Iridium spark plugs for enhanced engine performance and fuel efficiency\",\n  \"quantity\": 40,\n  \"cost\": 12.95\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/parts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080", 
+              "path": ["api", "v1", "parts"]
+            }
+          }
+        },
+        {
+          "name": "Create Part 6 - Battery 12V Heavy Duty",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Battery 12V Heavy Duty\",\n  \"description\": \"Long lasting 12V automotive battery with 800 CCA for reliable starting power\",\n  \"quantity\": 15,\n  \"cost\": 125.00\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/parts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080", 
+              "path": ["api", "v1", "parts"]
+            }
+          }
+        },
+        {
+          "name": "Create Part 7 - Transmission Fluid Synthetic",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Transmission Fluid Synthetic\",\n  \"description\": \"Full synthetic transmission fluid for smooth shifting and extended transmission life\",\n  \"quantity\": 35,\n  \"cost\": 24.99\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/parts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080", 
+              "path": ["api", "v1", "parts"]
+            }
+          }
+        },
+        {
+          "name": "Get All Parts",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/v1/parts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "parts"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Vehicle Parts",
+      "item": [
+        {
+          "name": "Create VehiclePart 1 - Toyota Camry Brake Pads",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehicleId\": 1,\n  \"partId\": 1,\n  \"quantity\": 4\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicle-parts", 
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "vehicle-parts"]
+            }
+          }
+        },
+        {
+          "name": "Create VehiclePart 2 - Honda Civic Oil Filter",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehicleId\": 2,\n  \"partId\": 2,\n  \"quantity\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicle-parts", 
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "vehicle-parts"]
+            }
+          }
+        },
+        {
+          "name": "Create VehiclePart 3 - Ford F150 Air Filter",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehicleId\": 3,\n  \"partId\": 3,\n  \"quantity\": 2\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicle-parts", 
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "vehicle-parts"]
+            }
+          }
+        },
+        {
+          "name": "Create VehiclePart 4 - Silverado Tire Set",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehicleId\": 4,\n  \"partId\": 4,\n  \"quantity\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicle-parts", 
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "vehicle-parts"]
+            }
+          }
+        },
+        {
+          "name": "Create VehiclePart 5 - Tesla Model 3 Battery",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehicleId\": 5,\n  \"partId\": 6,\n  \"quantity\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicle-parts", 
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "vehicle-parts"]
+            }
+          }
+        },
+        {
+          "name": "Create VehiclePart 6 - BMW X5 Spark Plugs",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehicleId\": 6,\n  \"partId\": 5,\n  \"quantity\": 6\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicle-parts", 
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "vehicle-parts"]
+            }
+          }
+        },
+        {
+          "name": "Create VehiclePart 7 - Toyota Camry Transmission Fluid",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehicleId\": 1,\n  \"partId\": 7,\n  \"quantity\": 3\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicle-parts", 
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "vehicle-parts"]
+            }
+          }
+        },
+        {
+          "name": "Get All Vehicle Parts",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/v1/vehicle-parts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "vehicle-parts"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
